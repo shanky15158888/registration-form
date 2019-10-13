@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            registerList: !isEmpty(getSessionData) ? JSON.parse(getSessionData.data) : []
+            registerList: !isEmpty(getSessionData('registeredList')) ? JSON.parse(getSessionData('registeredList')).data : []
         }
     }
     getList = () => {
@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
                             return <React.Fragment>
                                 <tr key={index}>
                                     <td>{item.userName}</td>
-                                    <td>{item.userName}</td>
+                                    <td>{item.email}</td>
                                 </tr>
                             </React.Fragment>
                         })

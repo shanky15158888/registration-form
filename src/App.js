@@ -23,7 +23,8 @@ class App extends React.Component {
       registerDetail,
       handleNext: this.handleNext
     };
-    return <parentContext.provider value={detail}>
+    return (
+    <parentContext.Provider value={detail}>
       <Router>
         <div>
           <Switch>
@@ -34,7 +35,8 @@ class App extends React.Component {
           </Switch>
         </div>
       </Router>
-    </parentContext.provider>
+    </parentContext.Provider>
+    )
   }
 }
 

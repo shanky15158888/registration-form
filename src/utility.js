@@ -5,8 +5,9 @@ export const handleSession = (data) => {
     let getSession = getSessionData("registeredList");
     if(!isEmpty(getSession)) {
         getSession = JSON.parse(getSession);
-        getSession.push(registerDetail);
-        setSessionData("registeredList", getSession);
+        const parsedData = getSession.data;
+        parsedData.push(data);
+        setSessionData("registeredList", parsedData);
     } else {
         const arr = [];
         arr.push(data);
