@@ -16,8 +16,8 @@ class UserList extends React.Component {
             <parentContext.Consumer>
                 {({ registerDetail }) => (
                     <div>
-                        <div>UserName:  ${registerDetail.userName}</div>
-                        <div>Email:  ${registerDetail.email}</div>
+                        <div>{`UserName:  ${registerDetail.userName}`}</div>
+                        <div>{`Email:  ${registerDetail.email}`}</div>
                         <div><button type="submit" onClick={this.handleSubmit}>Submit</button></div>
                     </div>
                 )}

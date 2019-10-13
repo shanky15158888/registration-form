@@ -14,24 +14,27 @@ class Dashboard extends React.Component {
     getList = () => {
         const { registerList } = this.state;
         if (!isEmpty(registerList)) {
-            return <table>
-                <tr>
-                    <th>UserName</th>
-                    <th>Email</th>
-                </tr>
-                {
-                    map(registerList, (item, index) => {
-                        return <React.Fragment>
-                            <tr key={index}>
-                                <td>{item.userName}</td>
-                                <td>{item.userName}</td>
-                            </tr>
-                        </React.Fragment>
-                    })
-                }
-            </table>
+            return <React.Fragment>
+                <table>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Email</th>
+                    </tr>
+                    {
+                        map(registerList, (item, index) => {
+                            return <React.Fragment>
+                                <tr key={index}>
+                                    <td>{item.userName}</td>
+                                    <td>{item.userName}</td>
+                                </tr>
+                            </React.Fragment>
+                        })
+                    }
+                </table>
+                <div><h1>{`${registerList.length} Users registered`}</h1></div>
+            </React.Fragment>
         }
-        return null;
+        return <div>{`0 Users registered`}</div>;
     }
     render() {
         return (
