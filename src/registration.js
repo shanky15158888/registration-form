@@ -26,14 +26,7 @@ class Register extends React.Component {
     }
     handleChange = (e) => {
         const { name, value } = e.target;
-        if (name === 'userName') {
-            this.setState({ userName: value });
-        } else if (name === 'email') {
-            this.setState({ email: value });
-        } else {
-            this.setState({ password: value });
-        }
-
+        this.setState({ [name]: value });
     }
     render() {
         const { hasError } = this.state;
