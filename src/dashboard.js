@@ -4,6 +4,7 @@ import { getSessionData } from './utility';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 import Dropdown from './dropdown';
+import DebounceComponent from './debounceComponent'
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -72,6 +73,7 @@ class Dashboard extends React.Component {
                     <Dropdown />
                     <Dropdown />
                     <Dropdown />
+                    <DebounceComponent/>
                 </div>
             </React.Fragment>
         )
