@@ -5,14 +5,21 @@ import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 import Dropdown from './dropdown';
 import DebounceComponent from './debounceComponent'
+import PortalComponent from './portalComponent'
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             registerList: !isEmpty(getSessionData('registeredList')) ? JSON.parse(getSessionData('registeredList')).data : [],
-            timer: new Date()
+            timer: new Date(),
+            clicks: 0
         }
+    }
+    handleClick = () => {
+        this.setState(state => ({
+            clicks: state.clicks + 1
+        }));
     }
     getList = () => {
         const { registerList } = this.state;
@@ -27,11 +34,11 @@ class Dashboard extends React.Component {
                     </thead>
                     <tbody>
                         {
-                            map(registerList, (item, index) => {                                
-                                    return <tr key={index}>
-                                        <td>{item.userName}</td>
-                                        <td>{item.email}</td>
-                                    </tr>
+                            map(registerList, (item, index) => {
+                                return <tr key={index}>
+                                    <td>{item.userName}</td>
+                                    <td>{item.email}</td>
+                                </tr>
                             })
                         }
                     </tbody>
@@ -70,10 +77,26 @@ class Dashboard extends React.Component {
                     {
                         this.getList()
                     }
+                    {/* <Dropdown />
                     <Dropdown />
                     <Dropdown />
-                    <Dropdown />
-                    <DebounceComponent/>
+                    <DebounceComponent /> */}
+                    <div>                        
+                        <div onClick={this.handleClick}>
+                            <p>Number of clicks: {this.state.clicks}</p>
+                            <p>Open up the browser DevTools
+                                to observe that the button
+                                is not a child of the div
+                                with the onClick handler.
+                            </p>
+                            <PortalComponent id="modal-root">
+                                <div className="modal">
+                                    <button>Click</button>
+                                </div>
+                            </PortalComponent>
+                        </div>
+                        <div id="modal-root"></div>
+                    </div>
                 </div>
             </React.Fragment>
         )
