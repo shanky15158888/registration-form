@@ -6,6 +6,8 @@ import map from 'lodash/map';
 import Dropdown from './dropdown';
 import DebounceComponent from './debounceComponent'
 import PortalComponent from './portalComponent'
+import PureComponent from './pureComponent'
+import ThrottleComponent from './throttleComponent'
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -81,6 +83,7 @@ class Dashboard extends React.Component {
                     <Dropdown />
                     <Dropdown />
                     <DebounceComponent /> */}
+                    <PureComponent value={timer.toLocaleTimeString()}/>
                     <div>                        
                         <div onClick={this.handleClick}>
                             <p>Number of clicks: {this.state.clicks}</p>
@@ -97,6 +100,7 @@ class Dashboard extends React.Component {
                         </div>
                         <div id="modal-root"></div>
                     </div>
+                    <ThrottleComponent />
                 </div>
             </React.Fragment>
         )
